@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Diti Goals{% endblock %}</title>
+
+    <style>
+        :root {
+            --orange: #f97316;
+            --black: #171717;
+            --white: #ffffff;
+            --background: #f8f8f8;
+            --gray: #737373;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--black);
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid #e5e5e5;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        nav a {
+            color: var(--black);
+            text-decoration: none;
+            margin-left: 24px;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 24px;
+            min-height: 65vh;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--gray);
+            border-top: 1px solid #e5e5e5;
+            background: var(--white);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">DT <span>Goals</span></div>
+
+        <nav>
+            <a href="{% url 'tasks:task_list' %}">Tasks</a>
+            <a href="#">Goals</a>
+            <a href="#">Progress</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        Diti Goals &copy; 2026 — Organize your day.
+    </footer>
+
+</body>
+</html>

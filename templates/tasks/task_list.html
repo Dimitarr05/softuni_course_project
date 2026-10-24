@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}My Tasks | Diti Goals{% endblock %}
+
+{% block content %}
+    <h1>My Tasks</h1>
+
+    <p>Manage your daily tasks in one place.</p>
+
+    {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong>
+                    — {{ task.get_status_display }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks yet. Your tasks will appear here.</p>
+    {% endif %}
+    
+    <p>
+    <a href="{% url 'tasks:task_create' %}">+ Create a new task</a>
+    </p>
+{% endblock %}
