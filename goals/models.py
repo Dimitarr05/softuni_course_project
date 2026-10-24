@@ -11,5 +11,11 @@ class Goal(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    tasks = models.ManyToManyField(
+        "tasks.Task",
+        blank=True,
+        related_name="goals",
+    )
+
     def __str__(self):
         return self.title
