@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Task | Diti Goals{% endblock %}
+
+{% block content %}
+    <h1>Delete Task</h1>
+
+    <p>Are you sure you want to delete "{{ task.title }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete task</button>
+        <a href="{% url 'tasks:task_list' %}">Cancel</a>
+    </form>
+{% endblock %}

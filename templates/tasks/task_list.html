@@ -13,6 +13,8 @@
                 <li>
                     <strong>{{ task.title }}</strong>
                     — {{ task.get_status_display }}
+                    <a href="{% url 'tasks:task_update' task.pk %}">Edit</a>
+                    <a href="{% url 'tasks:task_delete' task.pk %}">Delete</a>
                 </li>
             {% endfor %}
         </ul>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if goal %}Edit Goal{% else %}Create Goal{% endif %} | Diti Goals
+{% endblock %}
+
+{% block content %}
+    {% if goal %}
+        <h1>Edit Goal</h1>
+    {% else %}
+        <h1>Create a New Goal</h1>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Save Goal</button>
+        <a href="{% url 'goals:goal_list' %}">Cancel</a>
+    </form>
+{% endblock %}
