@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load task_filters %}
 
 {% block title %}My Tasks | Diti Goals{% endblock %}
 
@@ -6,6 +7,30 @@
     <h1>My Tasks</h1>
 
     <p>Manage your daily tasks in one place.</p>
+    
+<form method="get">
+    <label for="status">Filter by status:</label>
+    <select name="status" id="status">
+        <option value="">All statuses</option>
+        <option value="pending">Pending</option>
+        <option value="in_progress">In progress</option>
+        <option value="completed">Completed</option>
+    </select>
+
+    <label for="priority">Filter by priority:</label>
+    <select name="priority" id="priority">
+        <option value="">All priorities</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select>
+
+    <button type="submit">Filter</button>
+    <a href="{% url 'tasks:task_list' %}">Clear filters</a>
+</form>
+<hr>
+
+    
 
     {% if tasks %}
         <ul>
@@ -13,8 +38,15 @@
                 <li>
                     <strong>{{ task.title }}</strong>
                     — {{ task.get_status_display }}
+                    — {{ task.priority|priority_label }}
                     <a href="{% url 'tasks:task_update' task.pk %}">Edit</a>
+                    
                     <a href="{% url 'tasks:task_delete' task.pk %}">Delete</a>
+                    {% if task.status != "completed" %}
+                        <a href="{% url 'tasks:task_complete' task.pk %}">
+                        Mark as completed
+                        </a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>

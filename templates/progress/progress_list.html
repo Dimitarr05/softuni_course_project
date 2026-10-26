@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% block title %}Progress | Diti Goals{% endblock %}
+
+{% block content %}
+<h1>My Progress</h1>
+    <p>
+    <a href="{% url 'progress:activity_create' %}">+ Add Activity</a>
+    </p>
+
+<p>Here you can see the latest activity on your tasks.</p>
+
+{% if activities %}
+    {% for activity in activities %}
+        <article>
+            <h2>{{ activity.task.title }}</h2>
+
+            <p>Action: {{ activity.get_action_display }}</p>
+
+            {% if activity.description %}
+                <p>{{ activity.description }}</p>
+            {% endif %}
+
+            <p>{{ activity.created_at|date:"d.m.Y H:i" }}</p>
+        </article>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No activity recorded yet.</p>
+{% endif %}
+
+{% endblock %}

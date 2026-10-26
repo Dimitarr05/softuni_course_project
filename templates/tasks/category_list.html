@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Categories | Diti Goals{% endblock %}
+
+{% block content %}
+<h1>My Categories</h1>
+
+<p>Organize your tasks into categories.</p>
+
+<p>
+    <a href="{% url 'tasks:category_create' %}">+ Add Category</a>
+</p>
+
+{% if categories %}
+    {% for category in categories %}
+        <article>
+            <h2>{{ category.name }}</h2>
+
+            {% if category.description %}
+                <p>{{ category.description }}</p>
+            {% else %}
+                <p>No description provided.</p>
+            {% endif %}
+        </article>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>You haven't created any categories yet.</p>
+{% endif %}
+
+{% endblock %}

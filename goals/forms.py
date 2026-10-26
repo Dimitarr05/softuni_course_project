@@ -39,3 +39,11 @@ class GoalForm(forms.ModelForm):
                 attrs={"type": "date"}
             ),
         }
+
+    def clean_title(self):
+        title = self.cleaned_data["title"].strip()
+
+        if len(title) < 3:
+            raise forms.ValidationError("The goal title must contain at least 3 characters.")
+
+        return title

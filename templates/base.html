@@ -77,9 +77,11 @@
         <div class="logo">DT <span>Goals</span></div>
 
         <nav>
+            <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'tasks:task_list' %}">Tasks</a>
-            <a href="#">Goals</a>
-            <a href="#">Progress</a>
+            <a href="{% url 'goals:goal_list' %}">Goals</a>
+            <a href="{% url 'tasks:category_list' %}">Categories</a>
+            <a href="{% url 'progress:progress_list' %}">Progress</a>
         </nav>
     </header>
 
@@ -88,9 +90,7 @@
         {% endblock %}
     </main>
 
-    <footer>
-        Diti Goals &copy; 2026 — Organize your day.
-    </footer>
+    {% include "partials/footer.html" %}
 
 </body>
 </html>

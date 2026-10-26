@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home | Diti Goals{% endblock %}
+
+{% block content %}
+<h1>Welcome to Diti Goals!</h1>
+
+<p>Organize your tasks, set your goals, and track your progress.</p>
+
+<div>
+    <h2>Manage Your Tasks</h2>
+    <p>Create and organize your daily tasks.</p>
+    <a href="{% url 'tasks:task_list' %}">View Tasks</a>
+</div>
+
+<div>
+    <h2>Set Your Goals</h2>
+    <p>Plan what you want to achieve.</p>
+    <a href="{% url 'goals:goal_list' %}">View Goals</a>
+</div>
+
+<div>
+    <h2>Track Your Progress</h2>
+    <p>See the latest activity on your tasks.</p>
+    <a href="{% url 'progress:progress_list' %}">View Progress</a>
+</div>
+
+<div>
+    <h2>Organize Categories</h2>
+    <p>Group your tasks into categories.</p>
+    <a href="{% url 'tasks:category_list' %}">View Categories</a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Add Category | Diti Goals{% endblock %}
+
+{% block content %}
+<h1>Add a New Category</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Save Category</button>
+    <a href="{% url 'tasks:category_list' %}">Cancel</a>
+</form>
+
+{% endblock %}
