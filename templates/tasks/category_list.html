@@ -21,6 +21,10 @@
             {% else %}
                 <p>No description provided.</p>
             {% endif %}
+                
+            {% if not category.tasks.exists %}
+                <a href="{% url 'tasks:category_delete' category.pk %}">Delete</a>
+            {% endif %}
         </article>
         <hr>
     {% endfor %}

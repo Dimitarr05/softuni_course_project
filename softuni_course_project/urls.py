@@ -25,3 +25,5 @@ urlpatterns = [
     path("goals/", include("goals.urls")),
     path("progress/", include("progress.urls")),
 ]
+
+handler404 = "softuni_course_project.views.custom_404"

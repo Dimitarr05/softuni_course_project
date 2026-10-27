@@ -147,3 +147,16 @@ def task_list(request):
         "tasks/task_list.html",
         {"tasks": tasks}
     )
+
+def category_delete(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+
+    if request.method == "POST":
+        category.delete()
+        return redirect("tasks:category_list")
+
+    return render(
+        request,
+        "tasks/category_confirm_delete.html",
+        {"category": category},
+    )

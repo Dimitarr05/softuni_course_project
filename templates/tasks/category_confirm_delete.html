@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Category | Diti Goals{% endblock %}
+
+{% block content %}
+<h1>Delete Category</h1>
+
+<p>Are you sure you want to delete the category "{{ category.name }}"?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'tasks:category_list' %}">Cancel</a>
+</form>
+{% endblock %}
